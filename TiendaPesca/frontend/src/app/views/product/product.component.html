@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="row">
+        <div class="col s5 py-5">
+            <div class="card">
+                <div class="card-content">
+                    <form #productForm="ngForm" (ngSubmit)="addProduct(productForm)">
+                        <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="selectedProduct._id">
+                        <div class="row">
+                            <div class="input-field col s12" style="display: contents;">
+                                <input type="text" #name="ngModel" name="name" [(ngModel)]="selectedProduct.name" placeholder="Enter product name">
+                            </div>
+                            <div class="input-field col s12" style="display: contents;">
+                                <input type="text" #brand="ngModel" name="brand" [(ngModel)]="selectedProduct.brand" placeholder="Enter product brand">
+                            </div>
+                            <div class="input-field col s12" style="display: contents;">
+                                <input type="text" #description="ngModel" name="description" [(ngModel)]="selectedProduct.description" placeholder="Enter product description">
+                            </div>
+                            <div class="input-field col s12" style="display: contents;">
+                                <input type="number" #cash="ngModel" name="cash" [(ngModel)]="selectedProduct.cash" placeholder="Enter product cash">
+                            </div>
+                            <div class="card-action" style="display: contents;">
+                                <div class="input-field col s12" style="padding-top: 30px;">
+                                    <button class="btn right" (click)="resetForm(productForm)">Clean</button>
+                                    <button class="btn right mr-2">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col s7 py-5">
+            <table>
+                <thead>
+                    <th>Name</th>
+                    <th>Brand</th>
+                    <th>Description</th>
+                    <th>Cash</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let product of productCollection'>
+                        <td>{{product?.name}}</td>
+                        <td>{{product?.brand}}</td>
+                        <td>{{product?.description}}</td>
+                        <td>{{product?.cash}}</td>
+                        <td>
+                            <a>
+                                <i class="material-icons pointer" (click)='editProduct(product)'>edit</i>
+                            </a>
+                            <a>
+                                <i class="material-icons pointer" (click)='deleteProduct(product._id)'>delete</i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+<div *ngIf="identity">
+  <div  class="right pt-3 mr-3 ml-5">
+    <span style="color: white;margin-right: 5px !important;"> Bienvenido {{identity.name}} </span>
+    <a class="waves-effect waves-light btn" (click)="logout()" style="margin:0 7px 0 0 ;">Salir</a>
+  </div>
+  <app-menu></app-menu>
+  <router-outlet></router-outlet>
+  <footer class="page-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Contenido Adicional</h5>
+          <p class="grey-text text-lighten-4">En nuestra página actualmente en desarrollo, podrás encontrar
+            cualquier artículo de pesca.
+          </p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Links</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      © 2014 Copyright Text
+      <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+<div *ngIf="!identity">
+    <div class="row">
+        <div class="col s6">
+            <h2>Login</h2>
+            <form #loginForm="ngForm" (ngSubmit)="onSubmitLogin(loginForm)" class="col s7">
+                <p>
+                    <label >Email:</label><input type="email" #email="ngModel" name="email" [(ngModel)]="user.email" required>
+                </p>
+                <p>
+                    <label>Password:</label><input type="password" #password="ngModel" name="password" [(ngModel)]="user.password" required>
+                </p>
+                <input type="submit" value="Login" class="btn">
+            </form>
+        </div>
+        <div class="col s6">
+            <h2>Register</h2>
+            <form #registerForm="ngForm" (ngSubmit)="onSubmitRegister(registerForm)" class="col s10">
+                <p>
+                    <label >Nombre:</label><input type="text" #name="ngModel" name="name" [(ngModel)]="user_register.name" required>
+                </p>
+                <p>
+                    <label >Subname:</label><input type="text" #subname="ngModel" name="subname" [(ngModel)]="user_register.subname" required>
+                </p>
+                <p>
+                    <label >DNI:</label><input type="text" #DNI="ngModel" name="DNI" [(ngModel)]="user_register.DNI" required>
+                </p>
+                <p>
+                    <label >Direccion:</label><input type="text" #direction="ngModel" name="direction" [(ngModel)]="user_register.direction" required>
+                </p>
+                <p>
+                    <label >Email:</label><input type="email" #email="ngModel" name="email" [(ngModel)]="user_register.email" required>
+                </p>
+                <p>
+                    <label >Password:</label><input type="password" #password="ngModel" name="password" [(ngModel)]="user_register.password" required>
+                </p>
+                <p>
+                    <label >CP:</label><input type="number" #CP="ngModel" name="CP" [(ngModel)]="user_register.CP" required>
+                </p>
+                <p>
+                    <label >Telefono:</label><input type="tel" #telephone="ngModel" name="telephone" [(ngModel)]="user_register.telephone"  required>
+                </p>
+                <input type="submit" value="Register" class="btn">
+            </form>
+        </div>
+    </div>
+</div>
