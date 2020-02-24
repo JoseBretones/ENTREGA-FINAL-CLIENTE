@@ -79,7 +79,6 @@ export class AppComponent {
       );
   }
   logout() {
-    console.log("Entré");
     localStorage.removeItem('identity');
     localStorage.removeItem('token');
     localStorage.clear();
